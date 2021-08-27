@@ -1,6 +1,6 @@
 <script lang="ts">
-	import Demo from "./Demo.svelte";
 	import About from "./About.svelte";
+	import Demo from "./Demo.svelte";
 	import Divider from "./Divider.svelte";
 </script>
 
