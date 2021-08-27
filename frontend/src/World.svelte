@@ -225,7 +225,7 @@
 		transition: all 0.3s ease-in
 
 	.alive
-		width: var(--size)
-		height: var(--size)
+		width: calc(var(--size) - 2px)
+		height: calc(var(--size) - 2px)
 		background-color: var(--palette-black)
 </style>
