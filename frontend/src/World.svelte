@@ -179,7 +179,9 @@
 			<button on:click={clear}>Clear</button>
 		</div>
 		<div>
-			<button on:click={togglePlay}>{paused ? "Resume" : "Pause"}</button>
+			<button id="pause" on:click={togglePlay}
+				>{paused ? "Resume" : "Pause"}</button
+			>
 		</div>
 	</div>
 </div>
@@ -201,6 +203,9 @@
 		justify-content: space-between
 
 		padding-top: 1.5em	
+
+	#pause
+		width: 86px
 
 	.row
 		display: flex
