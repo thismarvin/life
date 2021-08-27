@@ -18,8 +18,8 @@
 		}
 	}
 
-	export let width = 20;
-	export let height = 20;
+	export let width = 10;
+	export let height = 10;
 	export let data: CellType[][] = [];
 
 	export let wrap = false;
@@ -175,7 +175,7 @@
 	onMount(() => loop(0));
 </script>
 
-<div id="parent">
+<div id="parent" style="--size: calc(100vw / {width});">
 	{#each data as row}
 		<div class="row">
 			{#each row as cell}
@@ -188,27 +188,21 @@
 </div>
 
 <style lang="sass">
-	:root
-		--test-size: calc(100vw / 10)
-
-	#parent
-		display: block
-
 	.row
 		display: flex
 
 	.cell
-		width: var(--test-size)
-		height: var(--test-size)
+		width: var(--size)
+		height: var(--size)
 		background-color: var(--palette-white)
-		
+	
 	.inner-cell
 		width: 0
 		height: 0
-		transition: all 0.3s ease-in
+		transition: all 0.4s ease-in
 
 	.alive
-		background-color: #0f004e
-		width: calc(var(--test-size) - 4px)
-		height: calc(var(--test-size) - 4px)
+		width: calc(var(--size) - 4px)
+		height: calc(var(--size) - 4px)
+		background-color: var(--palette-dark-purple)
 </style>

@@ -32,16 +32,19 @@
 		color: var(--palette-white)
 
 	hr
-		height: 0.5em
 		border: 0
-		background: linear-gradient(90deg, #ff004d, #b200ff)
+		height: 0.5em
+		background: linear-gradient(90deg, var(--palette-red), var(--palette-purple))
+
+	p
+		color: var(--palette-light-gray)
 
 	#parent
 		padding: 1em
 		background-color: var(--palette-white)
 
 	#info
-		padding: 2em 1em
-		background-color: #0f004e
 		border-bottom-left-radius: 2em
+		padding: 2em 1em
+		background-color: var(--palette-dark-purple)
 </style>

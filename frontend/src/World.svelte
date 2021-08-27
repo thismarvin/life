@@ -29,9 +29,8 @@
 		}
 	}
 
-	export const width = 15;
-	export const height = 15;
-
+	export let width = 15;
+	export let height = 15;
 	export let data: CellType[][] = [];
 
 	let paused = false;
@@ -156,19 +155,25 @@
 	onMount(() => loop(0));
 </script>
 
-<div class="container">
-	<div class="grid">
+<div
+	id="parent"
+	style="--size: calc((100vw - 2em - 3em - 2px * {width} - 4px) / {width});"
+>
+	<div id="grid">
 		{#each data as row, y}
 			<div class="row">
 				{#each row as cell, x}
-					<div class="cell" on:click={() => set(x, y, cellTypeOpposite(cell))}>
+					<div
+						class="centered cell"
+						on:click={() => set(x, y, cellTypeOpposite(cell))}
+					>
 						<div class={`inner-cell ${cellTypeToString(cell)}`} />
 					</div>
 				{/each}
 			</div>
 		{/each}
 	</div>
-	<div class="controlPanel">
+	<div id="controlPanel">
 		<div>
 			<button on:click={randomize}>Randomize</button>
 			<button on:click={clear}>Clear</button>
@@ -180,52 +185,42 @@
 </div>
 
 <style lang="sass">
-	:root
-		--size: calc(100vw / 20)
-		--black: rgb(33, 33, 33)
-		--gray: rgb(230, 230, 230)
-
 	button
+		border: 2px solid var(--palette-black)
 		padding: 0.9em 1.2em
-		background-color: rgb(245, 245, 245)
-		border: 2px solid var(--black)
+		background-color: var(--palette-light-gray)
 
-	.container
-		display: block
+	#parent
+		padding: 4em 1.5em 1.5em 1.5em
 
-	.grid
-		border: 2px solid var(--black)	
+	#grid
+		border: 2px solid var(--palette-black)
+
+	#controlPanel
+		display: flex
+		justify-content: space-between
+
+		padding-top: 1.5em	
 
 	.row
 		display: flex
 
 	.cell
 		margin: 0
+		border-right: 2px solid var(--palette-light-gray)
+		border-bottom: 2px solid var(--palette-light-gray)
 		padding: 0
 		width: var(--size)
 		height: var(--size)
-		border-right: 2px solid var(--gray)
-		border-bottom: 2px solid var(--gray)
-		display: flex
-		justify-content: center
-		align-items: center
-		background-color: white
+		background-color: var(--palette-white)
 		
 	.inner-cell
-		// margin: 0
-		// padding: 0
 		width: 0
 		height: 0
 		transition: all 0.3s ease-in
 
 	.alive
-		background-color: var(--black)
-		width: calc(var(--size))
-		height: calc(var(--size))
-
-	.controlPanel
-		margin: 1em 0em	
-		display: flex
-		justify-content: space-between
-
+		width: var(--size)
+		height: var(--size)
+		background-color: var(--palette-black)
 </style>

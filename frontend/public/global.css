@@ -1,20 +1,24 @@
 @import url("https://fonts.googleapis.com/css2?family=Fira+Sans&display=swap");
 
 :root {
-	--palette-white: #ffffff;
+	--palette-black: #040013;
+	--palette-dark-purple: #0f004e;
+	--palette-purple: #b200ff;
+	--palette-red: #ff004d;
 	--palette-light-gray: #e6e6e6;
+	--palette-white: #ffffff;
 }
 
 html,
 body {
-	height: 100%;
 	margin: 0;
 	padding: 0;
+	height: 100%;
 }
 
 body {
 	font-family: "Fira Sans", sans-serif;
-	background-color: #0f004e;
+	background-color: var(--palette-dark-purple);
 }
 
 .centered {

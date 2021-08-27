@@ -2,7 +2,7 @@
 	import World from "./World.svelte";
 </script>
 
-<div id="parent" class="centered">
+<div id="parent">
 	<div id="paper">
 		<World />
 	</div>
@@ -10,14 +10,10 @@
 
 <style lang="sass">
 	#parent
-		background-color: var(--palette-white)
-
-	#parent
-		padding: 2em 0 1.5em 0
-		background-color: #0f004e
+		padding: 1em
+		background-color: var(--palette-dark-purple)
 
 	#paper
-		padding: 4.5em 1em 0em 1em
-		background-color: var(--palette-white)
 		border-top-right-radius: 2em
+		background-color: var(--palette-white)
 </style>

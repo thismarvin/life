@@ -2,7 +2,7 @@
 	import DisplayWorld from "./DisplayWorld.svelte";
 
 	export let width = 10;
-	export let height = 4;
+	export let height = 10;
 </script>
 
 <div id="parent">
