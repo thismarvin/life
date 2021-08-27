@@ -18,35 +18,39 @@
 		}
 	}
 
-	function cellTypeOpposite(type: CellType): CellType {
-		switch (type) {
-			case CellType.Dead:
-				return CellType.Alive;
-			case CellType.Alive:
-				return CellType.Dead;
-			default:
-				CellType.None;
+	export let width = 20;
+	export let height = 20;
+	export let data: CellType[][] = [];
+
+	export let wrap = false;
+	export let randomized = true;
+	export let autoReset = false;
+
+	let iterations = 0;
+
+	if (data.length === 0) {
+		for (let i = 0; i < height; ++i) {
+			data.push(new Array(width).fill(CellType.Dead));
 		}
 	}
 
-	export const width = 15;
-	export const height = 15;
-
-	export let data: CellType[][] = [];
-
-	let paused = false;
-
-	for (let i = 0; i < height; ++i) {
-		data.push(new Array(width).fill(CellType.Dead));
-	}
-
-	randomize();
-
-	function togglePlay() {
-		paused = !paused;
+	if (randomized) {
+		randomize();
 	}
 
 	function get(x: number, y: number): CellType {
+		if (wrap) {
+			let wrappedX = x;
+			let wrappedY = y;
+
+			wrappedX = wrappedX < 0 ? width - 1 : wrappedX;
+			wrappedX = wrappedX >= width ? 0 : wrappedX;
+			wrappedY = wrappedY < 0 ? height - 1 : wrappedY;
+			wrappedY = wrappedY >= height ? 0 : wrappedY;
+
+			return data[wrappedY][wrappedX];
+		}
+
 		if (x < 0 || x >= width || y < 0 || y >= height) {
 			return CellType.None;
 		}
@@ -54,11 +58,9 @@
 		return data[y][x];
 	}
 
-	function set(x: number, y: number, value: CellType) {
-		data[y][x] = value;
-	}
-
 	function randomize() {
+		iterations = 0;
+
 		for (let y = 0; y < height; ++y) {
 			for (let x = 0; x < width; ++x) {
 				data[y][x] = Math.random() > 0.6 ? CellType.Alive : CellType.Dead;
@@ -66,12 +68,16 @@
 		}
 	}
 
-	function clear() {
+	function isEmpty(): boolean {
 		for (let y = 0; y < height; ++y) {
 			for (let x = 0; x < width; ++x) {
-				data[y][x] = CellType.Dead;
+				if (data[y][x] === CellType.Alive) {
+					return false;
+				}
 			}
 		}
+
+		return true;
 	}
 
 	function getTotalNeighbors(x: number, y: number): number {
@@ -90,11 +96,17 @@
 	}
 
 	function update(deltaTime: number) {
-		if (paused) {
-			return;
+		if (autoReset) {
+			iterations += 1;
+
+			if (iterations >= 10 || isEmpty()) {
+				randomize();
+			}
 		}
 
 		let temp = [];
+
+		let changed = false;
 
 		for (let y = 0; y < height; ++y) {
 			temp.push(new Array());
@@ -106,6 +118,7 @@
 				if (current === CellType.Alive) {
 					if (neighbors < 2 || neighbors > 3) {
 						temp[y].push(CellType.Dead);
+						changed = true;
 						continue;
 					}
 				}
@@ -113,12 +126,18 @@
 				if (current === CellType.Dead) {
 					if (neighbors === 3) {
 						temp[y].push(CellType.Alive);
+						changed = true;
 						continue;
 					}
 				}
 
 				temp[y].push(current);
 			}
+		}
+
+		if (!changed) {
+			randomize();
+			return;
 		}
 
 		for (let y = 0; y < height; ++y) {
@@ -128,7 +147,7 @@
 		}
 	}
 
-	const target = 0.5;
+	const target = 1.5;
 
 	let totalElapsedTime = 0;
 	let accumulator = 0;
@@ -156,76 +175,40 @@
 	onMount(() => loop(0));
 </script>
 
-<div class="container">
-	<div class="grid">
-		{#each data as row, y}
-			<div class="row">
-				{#each row as cell, x}
-					<div class="cell" on:click={() => set(x, y, cellTypeOpposite(cell))}>
-						<div class={`inner-cell ${cellTypeToString(cell)}`} />
-					</div>
-				{/each}
-			</div>
-		{/each}
-	</div>
-	<div class="controlPanel">
-		<div>
-			<button on:click={randomize}>Randomize</button>
-			<button on:click={clear}>Clear</button>
+<div id="parent">
+	{#each data as row}
+		<div class="row">
+			{#each row as cell}
+				<div class="centered cell">
+					<div class={`inner-cell ${cellTypeToString(cell)}`} />
+				</div>
+			{/each}
 		</div>
-		<div>
-			<button on:click={togglePlay}>{paused ? "Resume" : "Pause"}</button>
-		</div>
-	</div>
+	{/each}
 </div>
 
 <style lang="sass">
 	:root
-		--size: calc(100vw / 20)
-		--black: rgb(33, 33, 33)
-		--gray: rgb(230, 230, 230)
+		--test-size: calc(100vw / 10)
 
-	button
-		padding: 0.9em 1.2em
-		background-color: rgb(245, 245, 245)
-		border: 2px solid var(--black)
-
-	.container
+	#parent
 		display: block
-
-	.grid
-		border: 2px solid var(--black)	
 
 	.row
 		display: flex
 
 	.cell
-		margin: 0
-		padding: 0
-		width: var(--size)
-		height: var(--size)
-		border-right: 2px solid var(--gray)
-		border-bottom: 2px solid var(--gray)
-		display: flex
-		justify-content: center
-		align-items: center
-		background-color: white
+		width: var(--test-size)
+		height: var(--test-size)
+		background-color: var(--palette-white)
 		
 	.inner-cell
-		// margin: 0
-		// padding: 0
 		width: 0
 		height: 0
 		transition: all 0.3s ease-in
 
 	.alive
-		background-color: var(--black)
-		width: calc(var(--size))
-		height: calc(var(--size))
-
-	.controlPanel
-		margin: 1em 0em	
-		display: flex
-		justify-content: space-between
-
+		background-color: #0f004e
+		width: calc(var(--test-size) - 4px)
+		height: calc(var(--test-size) - 4px)
 </style>

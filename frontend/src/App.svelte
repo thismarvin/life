@@ -1,23 +1,20 @@
 <script lang="ts">
-	import World from "./World.svelte";
+	import Demo from "./Demo.svelte";
+	import About from "./About.svelte";
+	import Divider from "./Divider.svelte";
 </script>
 
 <main>
-	<section id="head">
-		<h4>/home/marvin/demos/life</h4>
-	</section>
+	<Demo />
+	<About />
+	<Divider height={10} />
 
-	<section id="demo">
-		<World />
-	</section>
-
-	<div id="info">
+	<!-- <div id="info">
 		<section id="header">
 			<div class="entry">
-				<h4>TypeScript + Svelte</h4>
-				<hr class="gradient" />
 				<h3>Conway's</h3>
 				<h1>Game of Life</h1>
+				<hr class="gradient" />
 			</div>
 		</section>
 
@@ -68,7 +65,7 @@
 				>
 			</div>
 		</section>
-	</div>
+	</div> -->
 </main>
 
 <style lang="sass">
@@ -76,6 +73,32 @@
 		--width: 8
 		--height: 8
 		--size: 16px
+
+		--palette-background: #0f004e
+		--palette-purple: #603aff
+
+	.centered
+		display: flex
+		justify-content: center
+		align-items: center
+
+	.display
+		//display: grid
+		//padding: 4em 0
+		//grid-template-areas: "a ." "b b" "b b" ". c"
+
+	// #display-rack
+	// 	display: block
+
+	#display-a
+		//height: 80vw
+		background-color: #0f004e
+		//background: linear-gradient(0deg, #ff004d, #b200ff)
+		//background-color: var(--palette-background)
+		
+	#display-b
+		//height: 70vw
+		background-color: #8062ff
 
 	// main
 	// 	margin: 0 0.8em
@@ -115,23 +138,19 @@
 		margin-bottom: 2em
 
 	#head
-		margin: 2em 2em 0 2em
-		mar
+		margin: 2em 1.5em 0 1.5em
+		font-size: 1.1em
 
 	#info
 		background: #0f004e
 		margin-top: 4em
-		padding: 3em 2em
+		padding: 3em 1.5em
 		color: white
 		//border-top-left-radius: 2em
 		//border-top-right-radius: 3em
 
 	#demo
-		display: flex
-		align-content: center
-		justify-content: center
-		margin-top: 4em
-		margin-bottom: 4em
+		padding: 4em 0
 
 	#footer
 		margin-top: 2em
