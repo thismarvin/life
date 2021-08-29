@@ -6,11 +6,28 @@
 </script>
 
 <div id="parent">
-	<div id="divider" class="centered">
-		<DisplayWorld {width} {height} wrap={true} autoReset={true} />
-	</div>
+	<DisplayWorld {width} {height} wrap={true} autoReset={true} />
 </div>
 
 <style lang="sass">
+	@mixin medium
+		@media (min-width: 580px)
+			@content	
 
+	@mixin large
+		@media (min-width: 900px)
+			@content
+		
+	@mixin full
+		@media (min-width: 1200px)
+			@content
+
+	#parent
+		margin: auto
+
+		@include medium
+			padding-bottom: 2em
+
+		@include full
+			padding-bottom: 6em
 </style>

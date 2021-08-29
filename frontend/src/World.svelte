@@ -157,7 +157,7 @@
 
 <div
 	id="parent"
-	style="--size: calc((100vw - 2em - 3em - 2px * {width} - 4px) / {width});"
+	style="--size: min(30px, calc((100vw - 2em - 3em - {width} * 2px - 4px) / {width}));"
 >
 	<div id="grid">
 		{#each data as row, y}
@@ -194,6 +194,7 @@
 
 	#parent
 		padding: 4em 1.5em 1.5em 1.5em
+		max-width: calc(32px * 15) 
 
 	#grid
 		border: 2px solid var(--palette-black)

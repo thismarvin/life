@@ -175,7 +175,7 @@
 	onMount(() => loop(0));
 </script>
 
-<div id="parent" style="--size: calc(100vw / {width});">
+<div id="parent" style="--size: min(30px, calc(100vw / {width}));">
 	{#each data as row}
 		<div class="row">
 			{#each row as cell}

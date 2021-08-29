@@ -28,6 +28,18 @@
 </div>
 
 <style lang="sass">
+	@mixin medium
+		@media (min-width: 580px)
+			@content	
+
+	@mixin large
+		@media (min-width: 900px)
+			@content
+		
+	@mixin full
+		@media (min-width: 1200px)
+			@content
+
 	*
 		color: var(--palette-white)
 
@@ -41,7 +53,13 @@
 
 	#parent
 		padding: 1em
-		background-color: var(--palette-white)
+		max-width: 528px
+
+		@include medium
+			padding: 2em
+
+		@include full
+			padding-top: 6em
 
 	#info
 		border-bottom-left-radius: 2em
