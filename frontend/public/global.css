@@ -21,6 +21,12 @@ body {
 	background-color: var(--palette-dark-purple);
 }
 
+@media (min-width: 900px) {
+	body {
+		background-color: var(--palette-light-gray);
+	}
+}
+
 .centered {
 	display: flex;
 	justify-content: center;

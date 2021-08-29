@@ -24,6 +24,7 @@
 
 	#parent
 		margin: auto
+		padding-bottom: 1em
 
 		@include medium
 			padding-bottom: 2em

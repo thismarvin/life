@@ -5,13 +5,15 @@
 </script>
 
 <main id="parent">
-	<div id="container">
-		<div id="left" class="centered">
-			<Demo />
-		</div>
-		<div id="right" class="centered">
-			<About />
-			<Divider />
+	<div id="wrapper">
+		<div id="container">
+			<div id="left" class="centered">
+				<Demo />
+			</div>
+			<div id="right" class="centered">
+				<About />
+				<Divider />
+			</div>
 		</div>
 	</div>
 </main>
@@ -30,16 +32,14 @@
 			@content
 	
 	#parent
-		width: 100%
-		height: 100%
-		background-color: var(--palette-white)
-
 		@include large
 			display: flex
-			justify-content: center
-			align-items: center
+			height: 100%
 
-			background-color: var(--palette-light-gray)
+	#wrapper
+		@include large
+			margin: auto
+			padding: 1em
 
 	#container
 		@include large
@@ -47,7 +47,6 @@
 			grid-template-columns: 1fr 1fr
 			grid-template-rows: 1fr
 
-			margin: 1.5em
 			border-top-right-radius: 1.5em
 			border-bottom-left-radius: 1.5em
 			box-shadow: 0.5em 0.5em 1em rgba(0, 0, 0, 0.25)

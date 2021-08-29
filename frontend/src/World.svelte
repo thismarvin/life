@@ -187,10 +187,17 @@
 </div>
 
 <style lang="sass">
+	@mixin small
+		@media (min-width: 360px)
+			@content	
+
 	button
 		border: 2px solid var(--palette-black)
-		padding: 0.9em 1.2em
+		padding: 0.4rem 0.4rem
 		background-color: var(--palette-light-gray)
+
+		@include small
+			padding: 0.9rem 1.2rem
 
 	#parent
 		padding: 4em 1.5em 1.5em 1.5em
@@ -206,7 +213,10 @@
 		padding-top: 1.5em	
 
 	#pause
-		width: 86px
+		width: 56px
+
+		@include small
+			width: 86px
 
 	.row
 		display: flex
