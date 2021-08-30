@@ -10,11 +10,11 @@
 
 <style lang="sass">
 	@mixin medium
-		@media (min-width: 580px)
+		@media (min-width: 680px)
 			@content	
 
 	@mixin large
-		@media (min-width: 900px)
+		@media (min-width: 1024px)
 			@content
 		
 	@mixin full
@@ -22,13 +22,17 @@
 			@content
 
 	#parent
-		max-width: calc(1.5rem + 2px + 32px * 15 + 2px + 1.5rem)
+		padding: 1rem
+		max-width: calc(1.7rem + 2px + 32px * 15 + 2px + 1.7rem)
+
+		@include medium
+			padding: 2rem	
 
 		@include large
-			padding: 2rem
+			padding: 0 2rem
 		
 		@include full
-			padding: 6rem 0
+			padding: 0
 
 	#paper
 		border-top-right-radius: 2rem

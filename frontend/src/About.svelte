@@ -29,11 +29,11 @@
 
 <style lang="sass">
 	@mixin medium
-		@media (min-width: 580px)
+		@media (min-width: 680px)
 			@content	
 
 	@mixin large
-		@media (min-width: 900px)
+		@media (min-width: 1024px)
 			@content
 		
 	@mixin full
@@ -59,7 +59,7 @@
 			padding: 2rem
 
 		@include full
-			padding-top: 6rem
+			padding: 2.5rem
 
 	#info
 		border-bottom-left-radius: 2rem

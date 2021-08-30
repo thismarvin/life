@@ -7,8 +7,10 @@
 <main id="parent">
 	<div id="wrapper">
 		<div id="container">
-			<div id="left" class="centered">
-				<Demo />
+			<div id="left-wrapper">
+				<div id="left">
+					<Demo />
+				</div>
 			</div>
 			<div id="right" class="centered">
 				<About />
@@ -20,11 +22,11 @@
 
 <style lang="sass">
 	@mixin medium
-		@media (min-width: 580px)
+		@media (min-width: 680px)
 			@content	
 
 	@mixin large
-		@media (min-width: 900px)
+		@media (min-width: 1024px)
 			@content
 		
 	@mixin full
@@ -37,16 +39,25 @@
 			height: 100%
 
 	#wrapper
-		@include large
+		@include medium
 			margin: auto
-			padding: 1rem
+			padding: 3rem 0 0 0
 
+		@include large
+			padding: 1rem
+			
 	#container
+		@include medium
+			margin: auto
+			max-width: calc(480px + 4em + 4em)
+			box-shadow: 0.5rem 0.5rem 1rem rgba(0, 0, 0, 0.25), -0.5rem 0.5rem 1rem rgba(0, 0, 0, 0.25)
+
 		@include large
 			display: grid
 			grid-template-columns: 1fr 1fr
 			grid-template-rows: 1fr
 
+			max-width: 100%
 			border-top-right-radius: 1.5rem
 			border-bottom-left-radius: 1.5rem
 			box-shadow: 0.5rem 0.5rem 1rem rgba(0, 0, 0, 0.25)
@@ -54,16 +65,18 @@
 		@include full
 			grid-template-columns: 1.2fr 0.8fr
 
-	#left
-		padding: 1rem
+	#left-wrapper
+		display: flex
 		background-color: var(--palette-dark-purple)
-
-		@include medium
-			padding: 2rem 0
 
 		@include large
 			border-bottom-left-radius: 1.5rem
-			padding: 0
+
+	#left
+		margin: auto
+
+		@include large
+			border-bottom-left-radius: 1.5rem
 
 	#right
 		flex-direction: column
