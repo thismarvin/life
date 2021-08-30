@@ -24,11 +24,11 @@
 
 	#parent
 		margin: auto
-		padding-bottom: 1em
+		padding-bottom: 1rem
 
 		@include medium
-			padding-bottom: 2em
+			padding-bottom: 2rem
 
 		@include full
-			padding-bottom: 6em
+			padding-bottom: 6rem
 </style>

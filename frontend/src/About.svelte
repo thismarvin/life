@@ -45,24 +45,24 @@
 
 	hr
 		border: 0
-		height: 0.5em
+		height: 0.5rem
 		background: linear-gradient(90deg, var(--palette-red), var(--palette-purple))
 
 	p
 		color: var(--palette-light-gray)
 
 	#parent
-		padding: 1em
+		padding: 1rem
 		max-width: 528px
 
 		@include medium
-			padding: 2em
+			padding: 2rem
 
 		@include full
-			padding-top: 6em
+			padding-top: 6rem
 
 	#info
-		border-bottom-left-radius: 2em
-		padding: 2em 1em
+		border-bottom-left-radius: 2rem
+		padding: 2rem 1rem
 		background-color: var(--palette-dark-purple)
 </style>

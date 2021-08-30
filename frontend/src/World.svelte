@@ -187,20 +187,14 @@
 </div>
 
 <style lang="sass">
-	@mixin small
-		@media (min-width: 360px)
-			@content	
-
 	button
-		border: 2px solid var(--palette-black)
-		padding: 0.4rem 0.4rem
+		font-size: min(3.4vw, 14px)
+		padding: 0.6em 0.7em
+		border: min(0.15em, 2px) solid var(--palette-black)
 		background-color: var(--palette-light-gray)
 
-		@include small
-			padding: 0.9rem 1.2rem
-
 	#parent
-		padding: 4em 1.5em 1.5em 1.5em
+		padding: 4rem 1.5rem 1.5rem 1.5rem
 		max-width: calc(32px * 15) 
 
 	#grid
@@ -210,13 +204,10 @@
 		display: flex
 		justify-content: space-between
 
-		padding-top: 1.5em	
+		padding-top: 1.5rem	
 
 	#pause
-		width: 56px
-
-		@include small
-			width: 86px
+		width: min(calc(1rem * 5), calc(16px * 5))
 
 	.row
 		display: flex

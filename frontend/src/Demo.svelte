@@ -22,15 +22,15 @@
 			@content
 
 	#parent
-		max-width: calc(1.5em + 2px + 32px * 15 + 2px + 1.5em)
+		max-width: calc(1.5rem + 2px + 32px * 15 + 2px + 1.5rem)
 
 		@include large
-			padding: 2em
+			padding: 2rem
 		
 		@include full
-			padding: 6em 0
+			padding: 6rem 0
 
 	#paper
-		border-top-right-radius: 2em
+		border-top-right-radius: 2rem
 		background-color: var(--palette-white)
 </style>

@@ -39,7 +39,7 @@
 	#wrapper
 		@include large
 			margin: auto
-			padding: 1em
+			padding: 1rem
 
 	#container
 		@include large
@@ -47,22 +47,22 @@
 			grid-template-columns: 1fr 1fr
 			grid-template-rows: 1fr
 
-			border-top-right-radius: 1.5em
-			border-bottom-left-radius: 1.5em
-			box-shadow: 0.5em 0.5em 1em rgba(0, 0, 0, 0.25)
+			border-top-right-radius: 1.5rem
+			border-bottom-left-radius: 1.5rem
+			box-shadow: 0.5rem 0.5rem 1rem rgba(0, 0, 0, 0.25)
 
 		@include full
 			grid-template-columns: 1.2fr 0.8fr
 
 	#left
-		padding: 1em
+		padding: 1rem
 		background-color: var(--palette-dark-purple)
 
 		@include medium
-			padding: 2em 0
+			padding: 2rem 0
 
 		@include large
-			border-bottom-left-radius: 1.5em
+			border-bottom-left-radius: 1.5rem
 			padding: 0
 
 	#right
@@ -70,5 +70,5 @@
 		background-color: var(--palette-white)
 		
 		@include large
-			border-top-right-radius: 1.5em
+			border-top-right-radius: 1.5rem
 </style>
