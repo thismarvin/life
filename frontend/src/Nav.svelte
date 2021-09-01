@@ -7,7 +7,7 @@
 				<a href="/"
 					><img
 						src="./images/logo.svg"
-						alt="a logo that sort of looks like the letter 'm'"
+						alt="thismarvin"
 						id="logo"
 						class="centered"
 					/></a
