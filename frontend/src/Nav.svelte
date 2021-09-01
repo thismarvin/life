@@ -30,6 +30,7 @@
 		height: 2rem
 		backdrop-filter: blur(1rem)
 		-webkit-backdrop-filter: blur(1rem)
+		box-shadow: 0.5rem 0 1rem rgba(0, 0, 0, 0.25)
 		background-color: rgba(255, 255, 255, 0.5)
 
 	ul
