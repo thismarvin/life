@@ -47,19 +47,10 @@
 		display: flex
 		background-color: var(--palette-dark-purple)
 
-		@include large
-			padding: 2rem 0
-		
 		@include full
-			padding: 0
 			height: calc(4rem + 0.5rem + 2rem + 4px + 32px * 15 + 8rem)
 
 	#about-wrapper
 		display: flex
 		background-color: var(--palette-white)
-
-		@include large
-			margin: auto
-			padding: 2rem 0
-			width: 100%
 </style>

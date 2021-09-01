@@ -70,9 +70,6 @@
 		@include medium
 			padding: 2rem
 
-		@include large
-			padding: 0
-
 	#info
 		padding: 1.5rem
 		border-radius: 1rem
