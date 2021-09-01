@@ -1,23 +1,23 @@
 <script lang="ts">
 	import About from "./About.svelte";
 	import Demo from "./Demo.svelte";
-	import Divider from "./Divider.svelte";
+	import Footer from "./Footer.svelte";
+	import Nav from "./Nav.svelte";
 </script>
 
-<main id="parent">
-	<div id="wrapper">
-		<div id="container">
-			<div id="left-wrapper">
-				<div id="left">
-					<Demo />
-				</div>
-			</div>
-			<div id="right" class="centered">
-				<About />
-				<Divider />
-			</div>
-		</div>
+<main id="app">
+	<div id="nav-wrapper">
+		<Nav />
 	</div>
+	<section id="container">
+		<div id="demo-wrapper">
+			<Demo />
+		</div>
+		<div id="about-wrapper">
+			<About />
+		</div>
+	</section>
+	<Footer />
 </main>
 
 <style lang="sass">
@@ -32,56 +32,34 @@
 	@mixin full
 		@media (min-width: 1200px)
 			@content
-	
-	#parent
-		@include large
-			display: flex
-			height: 100%
 
-	#wrapper
-		@include medium
-			margin: auto
-			padding: 3rem 0 0 0
+	#app
+		height: 100%	
 
-		@include large
-			padding: 1rem
-			
 	#container
-		@include medium
-			margin: auto
-			max-width: calc(480px + 4em + 4em)
-			box-shadow: 0.5rem 0.5rem 1rem rgba(0, 0, 0, 0.25), -0.5rem 0.5rem 1rem rgba(0, 0, 0, 0.25)
+		display: flex
+		flex-direction: column
 
-		@include large
-			display: grid
-			grid-template-columns: 1fr 1fr
-			grid-template-rows: 1fr
+	#nav-wrapper
+		padding-top: 2rem
 
-			max-width: 100%
-			border-top-right-radius: 1.5rem
-			border-bottom-left-radius: 1.5rem
-			box-shadow: 0.5rem 0.5rem 1rem rgba(0, 0, 0, 0.25)
-
-		@include full
-			grid-template-columns: 1.2fr 0.8fr
-
-	#left-wrapper
+	#demo-wrapper
 		display: flex
 		background-color: var(--palette-dark-purple)
 
 		@include large
-			border-bottom-left-radius: 1.5rem
-
-	#left
-		margin: auto
-
-		@include large
-			border-bottom-left-radius: 1.5rem
-
-	#right
-		flex-direction: column
-		background-color: var(--palette-white)
+			padding: 2rem 0
 		
+		@include full
+			padding: 0
+			height: calc(4rem + 0.5rem + 2rem + 4px + 32px * 15 + 8rem)
+
+	#about-wrapper
+		display: flex
+		background-color: var(--palette-white)
+
 		@include large
-			border-top-right-radius: 1.5rem
+			margin: auto
+			padding: 2rem 0
+			width: 100%
 </style>

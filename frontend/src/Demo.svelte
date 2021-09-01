@@ -2,10 +2,8 @@
 	import World from "./World.svelte";
 </script>
 
-<div id="parent">
-	<div id="paper">
-		<World />
-	</div>
+<div id="demo">
+	<World />
 </div>
 
 <style lang="sass">
@@ -21,20 +19,11 @@
 		@media (min-width: 1200px)
 			@content
 
-	#parent
+	#demo
+		margin: auto
 		padding: 1rem
-		max-width: calc(1.7rem + 2px + 32px * 15 + 2px + 1.7rem)
+		max-width: calc(2rem + 0.5rem + 4px + 32px * 15)
 
 		@include medium
-			padding: 2rem	
-
-		@include large
-			padding: 0 2rem
-		
-		@include full
-			padding: 0
-
-	#paper
-		border-top-right-radius: 2rem
-		background-color: var(--palette-white)
+			padding: 2rem
 </style>

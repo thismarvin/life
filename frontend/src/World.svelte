@@ -29,9 +29,9 @@
 		}
 	}
 
-	export let width = 15;
-	export let height = 15;
-	export let data: CellType[][] = [];
+	const width = 15;
+	const height = 15;
+	const data: CellType[][] = [];
 
 	let paused = false;
 
@@ -155,59 +155,71 @@
 	onMount(() => loop(0));
 </script>
 
-<div
-	id="parent"
-	style="--size: min(30px, calc((100vw - 2rem - 3.4rem - {width} * 2px - 4px) / {width}));"
->
-	<div id="grid">
-		{#each data as row, y}
-			<div class="row">
-				{#each row as cell, x}
-					<div
-						class="centered cell"
-						on:click={() => set(x, y, cellTypeOpposite(cell))}
-					>
-						<div class={`inner-cell ${cellTypeToString(cell)}`} />
+<div id="world">
+	<div id="grid-wrapper">
+		<div id="grid-container">
+			<div id="grid">
+				{#each data as row, y}
+					<div class="row">
+						{#each row as cell, x}
+							<div
+								class="centered cell"
+								on:click={() => set(x, y, cellTypeOpposite(cell))}
+							>
+								<div class={`inner-cell ${cellTypeToString(cell)}`} />
+							</div>
+						{/each}
 					</div>
 				{/each}
 			</div>
-		{/each}
+		</div>
 	</div>
-	<div id="controlPanel">
+
+	<div id="control-panel">
 		<div>
-			<button on:click={randomize}>Randomize</button>
+			<button on:click={randomize} id="randomize">Randomize</button>
 			<button on:click={clear}>Clear</button>
 		</div>
 		<div>
-			<button id="pause" on:click={togglePlay}
-				>{paused ? "Resume" : "Pause"}</button
-			>
+			<button on:click={togglePlay}>{paused ? "Resume" : "Pause"}</button>
 		</div>
 	</div>
 </div>
 
 <style lang="sass">
 	button
+		font-family: "Fira Sans", sans-serif
 		font-size: min(3.4vw, 14px)
-		padding: 0.6em 0.7em
-		border: min(0.15em, 2px) solid var(--palette-black)
-		background-color: var(--palette-light-gray)
+		color: var(--palette-dark-purple)
 
-	#parent
-		padding: 4rem 1.7rem 1.5rem 1.7rem
-		max-width: calc(32px * 15) 
+		border: none
+		padding: 1em 1.5em
+		border-radius: 1em
+		background-color: var(--palette-white)
+
+	#grid-wrapper
+		padding: 0.25rem
+		border-radius: 1.2rem
+		background: linear-gradient(90deg, var(--palette-red), var(--palette-purple))
+
+	#grid-container
+		padding: 1rem
+		background-color: white
+		border-radius: 1rem
 
 	#grid
+		--size: min(calc((100vw - 2rem - 0.5rem - 2rem - 4px - 2px * 15) / 15), 30px)
+
 		border: 2px solid var(--palette-black)
 
-	#controlPanel
+	#control-panel
 		display: flex
 		justify-content: space-between
 
-		padding-top: 1.5rem	
+		margin-top: 1rem
 
-	#pause
-		width: min(calc(1rem * 5), calc(16px * 5))
+	#randomize
+		margin-right: 0.5em
 
 	.row
 		display: flex

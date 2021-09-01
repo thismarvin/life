@@ -1,10 +1,10 @@
 <script lang="ts">
 </script>
 
-<div id="parent">
+<div id="about">
 	<div id="info">
-		<hr />
 		<h2>Conway's Game of Life</h2>
+		<hr />
 		<p>
 			a cellular automaton that mimics life by following a set of four simple
 			rules
@@ -20,7 +20,7 @@
 			</li>
 			<li>
 				<a class="link" href="https://youtu.be/R9Plq-D1gEk"
-					>Computerphile YouTube Video</a
+					>Numberphile YouTube Video</a
 				>
 			</li>
 		</ul>
@@ -45,24 +45,40 @@
 
 	hr
 		border: 0
-		height: 0.5rem
+		height: 0.25rem
 		background: linear-gradient(90deg, var(--palette-red), var(--palette-purple))
+
+	h2
+		font-weight: bold
+		margin-bottom: 0.75rem
+
+	h4
+		margin: 1rem 0
 
 	p
 		color: var(--palette-light-gray)
 
-	#parent
+	ul
+		padding-left: 2rem
+
+	#about
+		margin: auto
 		padding: 1rem
-		max-width: 528px
+		max-width: 450px
+		background-color: var(--palette-white)
 
 		@include medium
 			padding: 2rem
 
-		@include full
-			padding: 2.5rem
+		@include large
+			padding: 0
 
 	#info
-		border-bottom-left-radius: 2rem
-		padding: 2rem 1rem
+		padding: 1.5rem
+		border-radius: 1rem
+		box-shadow: 0.5rem 0.5rem 1rem rgba(0, 0, 0, 0.25)
 		background-color: var(--palette-dark-purple)
+
+		@include medium
+			padding: 2rem
 </style>
