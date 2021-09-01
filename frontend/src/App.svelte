@@ -48,7 +48,7 @@
 		background-color: var(--palette-dark-purple)
 
 		@include full
-			height: calc(4rem + 0.5rem + 2rem + 4px + 32px * 15 + 8rem)
+			height: calc(4rem + 0.5rem + 2rem + 4px + 32px * 15 + 1.5rem + 2rem + 63px)
 
 	#about-wrapper
 		display: flex

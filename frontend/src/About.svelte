@@ -70,6 +70,10 @@
 		@include medium
 			padding: 2rem
 
+		@include large
+			padding: 3.5rem
+			max-width: 530px
+
 	#info
 		padding: 1.5rem
 		border-radius: 1rem
@@ -78,4 +82,7 @@
 
 		@include medium
 			padding: 2rem
+		
+		@include large
+			border-radius: 0
 </style>

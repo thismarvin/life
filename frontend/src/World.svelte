@@ -187,6 +187,18 @@
 </div>
 
 <style lang="sass">
+	@mixin medium
+		@media (min-width: 680px)
+			@content	
+
+	@mixin large
+		@media (min-width: 1024px)
+			@content
+		
+	@mixin full
+		@media (min-width: 1200px)
+			@content
+
 	button
 		font-family: "Fira Sans", sans-serif
 		font-size: min(3.4vw, 14px)
@@ -197,15 +209,24 @@
 		border-radius: 1em
 		background-color: var(--palette-white)
 
+		@include large
+			border-radius: 0
+
 	#grid-wrapper
 		padding: 0.25rem
 		border-radius: 1.2rem
 		background: linear-gradient(90deg, var(--palette-red), var(--palette-purple))
 
+		@include large
+			border-radius: 0
+
 	#grid-container
 		padding: 1rem
 		background-color: white
 		border-radius: 1rem
+
+		@include large
+			border-radius: 0
 
 	#grid
 		--size: min(calc((100vw - 2rem - 0.5rem - 2rem - 4px - 2px * 15) / 15), 30px)
